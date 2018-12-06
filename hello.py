@@ -139,7 +139,9 @@ def resp(listURL):
     #cursor.execute('create table t_usersInDouban(id INT PRIMARY KEY auto_increment NOT NULL ,movieName VARCHAR(200) NOT NULL ,pictrue_address VARCHAR(1000))')
     cursor.execute('select * from t_usersInDouban')
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36',
+               'Accept-Language': 'zh-CN,zh;q=0.9',
+               'Connection': 'keep-alive'}
 ##    cookies = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4;+\
 ##               douban-fav-remind=1; gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; refer_url=https://read.douban.com/?dcs=login&dcm=anonymous;+\
 ##               ps=y; _gid=GA1.2.1239701197.1543899775; __utmc=30149280; __utmv=30149280.4591; __utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/;+\
@@ -147,10 +149,35 @@ def resp(listURL):
 ##               _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.119.1543979878.1543916495.; __utmt=1; __utmb=30149280.18.10.1543978027; _gat_UA-7019765-1=1; dbcl2="45911446:74lVttWqKD8"'} #xxx是刚才保存的cookies信息，粘贴在这里
     cookies = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4;+\
 douban-fav-remind=1; gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; ps=y; _gid=GA1.2.1239701197.1543899775; __utmv=30149280.4591;+\
-__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; ap_v=0,6.0;+\
-_pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544066611%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D; _pk_ses.100001.8cb4=*;+\
-__utma=30149280.195835846.1532935690.1544060310.1544066613.9; __utmt=1; dbcl2="45911446:eWnA+KOIvdY"; ck=5ePc; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.124.1544066691.1544060411.; __utmb=30149280.3.10.1544066613'} #xxx是刚才保存的cookies信息，粘贴在这里
-                        
+__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544082957%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D;+\
+_pk_ses.100001.8cb4=*;+\
+__utma=30149280.195835846.1532935690.1544073604.1544082961.11; __utmt=1; ck=-VdT; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.126.1544083018.1544074612.; __utmb=30149280.2.10.1544082961; dbcl2="45911446:u5j/1QxzfiA"'} #xxx是刚才保存的cookies信息，粘贴在这里
+    cookies2 = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4;+\
+douban-fav-remind=1; gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; ps=y; _gid=GA1.2.1239701197.1543899775; __utmv=30149280.4591;+\
+__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544082957%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D;+\
+_pk_ses.100001.8cb4=*;+\
+__utma=30149280.195835846.1532935690.1544073604.1544082961.11; __utmt=1; ck=-VdT; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.126.1544083018.1544074612.; __utmb=30149280.2.10.1544082961; dbcl2="45911446:u5j/1QxzfiA"'} #xxx是刚才保存的cookies信息，粘贴在这里
+    cookies3 = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4;+\
+douban-fav-remind=1; gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; ps=y; _gid=GA1.2.1239701197.1543899775; __utmv=30149280.4591;+\
+__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544082957%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D;+\
+_pk_ses.100001.8cb4=*;+\
+__utma=30149280.195835846.1532935690.1544073604.1544082961.11; __utmt=1; ck=-VdT; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.126.1544083018.1544074612.; __utmb=30149280.2.10.1544082961; dbcl2="45911446:u5j/1QxzfiA"'} #xxx是刚才保存的cookies信息，粘贴在这里
+##    cookies = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4; douban-fav-remind=1;+\
+##gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; ps=y; _gid=GA1.2.1239701197.1543899775; __utmv=30149280.4591;+\
+##__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544073600%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D;+\
+##_pk_ses.100001.8cb4=*;+\
+##__utma=30149280.195835846.1532935690.1544066613.1544073604.10; __utmt=1; ck=_Kyv; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.125.1544073657.1544066701.; __utmb=30149280.2.10.1544073604; dbcl2="45911446:D6DH1NPJzdQ"'} #xxx是刚才保存的cookies信息，粘贴在这里
+##    cookies2 = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4;+\
+##douban-fav-remind=1; gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; ps=y; _gid=GA1.2.1239701197.1543899775; __utmv=30149280.4591;+\
+##__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544073600%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D;+\
+##_pk_ses.100001.8cb4=*;+\
+##__utma=30149280.195835846.1532935690.1544066613.1544073604.10; dbcl2="45911446:D6DH1NPJzdQ"; ck=xLNz; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.125.1544073675.1544066701.; __utmb=30149280.4.10.1544073604'} #xxx是刚才保存的cookies信息，粘贴在这里
+##    cookies3 = {'cookie': 'bid=lRMSGS5Kzl8; ue="645247978@qq.com"; __yadk_uid=5Dvpex1kFtIj3I5it17pX079qWPDFLH1; push_noty_num=0; push_doumail_num=0; ll="108296"; _vwo_uuid_v2=D7524D8728538399059CC0C88099FE99A|68f6c840f24d7b5b9a4623a1557a3be4;+\
+##douban-fav-remind=1; gr_user_id=0221eade-5263-47d5-ad8e-6c5c56e04571; douban-profile-remind=1; _ga=GA1.2.195835846.1532935690; ct=y; ps=y; _gid=GA1.2.1239701197.1543899775; __utmv=30149280.4591;+\
+##__utmz=30149280.1543912514.3.2.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/people/54822305/; __utmc=30149280; _pk_ref.100001.8cb4=%5B%22%22%2C%22%22%2C1544073600%2C%22https%3A%2F%2Fshanghai.douban.com%2Fevents%2Fweek-1101%3Fstart%3D20%22%5D;+\
+##_pk_ses.100001.8cb4=*; __utma=30149280.195835846.1532935690.1544066613.1544073604.10; dbcl2="45911446:D6DH1NPJzdQ";+\
+##ck=xLNz; __utmt=1; _pk_id.100001.8cb4=c062f47c88c6bc72.1531214676.125.1544074604.1544066701.; __utmb=30149280.10.10.1544073604'} #xxx是刚才保存的cookies信息，粘贴在这里
+    cookiesSet=[cookies,cookies2,cookies3]                    
     #r = requests.get(url, cookies = cookies, headers = headers)
     #用不同IP去访问要爬去的网站
 
@@ -167,12 +194,13 @@ __utma=30149280.195835846.1532935690.1544060310.1544066613.9; __utmt=1; dbcl2="4
 ##    print(r.status_code)
 ##    print(r.text)
     randomchoice=random.choice(pro)
+    randomcookie=random.choice(cookiesSet)
         # 爬取数据
     for urlPath in listURL:
         try:
             
             # 获取网页源代码
-            response = requests.get(urlPath,proxies={'http':randomchoice}, cookies = cookies, headers = headers)
+            response = requests.get(urlPath,proxies={'http':randomchoice}, cookies = randomcookie, headers = headers)
             html = response.text
 ##            captcha=response.xpath('//*[@id="captcha_image"]/@src').extract()  #获取验证码图片的链接
 ##            print(captcha)
@@ -202,27 +230,42 @@ __utma=30149280.195835846.1532935690.1544060310.1544066613.9; __utmt=1; dbcl2="4
             numPat = r'共同的喜好\((.*?)\)'
             namePat = r'alt="(.*?)"/>'
             imgPat = r'">(.*?)</a><br />'
+            imgYanzhengma = r'" pl(.*?)="验证码"'
+            
             # 匹配正则（排名【用数据库中id代替，自动生成及排序】、电影名、电影海报（图片地址））
             res1 = re.compile(numPat)
             res2 = re.compile(namePat)
             res3 = re.compile(imgPat)
+            res4 = re.compile(imgYanzhengma)
             textList1 = res1.findall(html)
             textList2 = res2.findall(html)
             textList3 = res3.findall(html)
+            textList4 = res4.findall(html)
             #print(html)
             #with open(r'C:\douban.txt', 'wb+') as f:
             #    f.write(response.content) #把登陆主页后返回的数据保存到文件中
             print(str(len(textList1))+' ID='+urlPath+' 代理：'+randomchoice)
+            
             if response.status_code==200 or response.status_code==404:
-                if len(textList1)>0 :
-    ##                with open(r'C:\douban.txt', 'wb+') as f:
-    ##                    f.write(response.content) #把登陆主页后返回的数据保存到文件中
-                    # 遍历列表中元素,并将数据存入数据库
-                    for i in range(len(textList1)):
-                        print(str(textList1[i])+' ID='+urlPath)
-                        if len(textList2)>0 and len(textList3)>0 :
-                            print('insert into t_usersInDouban(same,movieName,pictrue_address,user) VALUES("%s","%s","%s","%s")' % (textList1[i],textList2[i],textList3[i],urlPath))
-                            cursor.execute('insert into t_usersInDouban(same,movieName,pictrue_address,user) VALUES("%s","%s","%s","%s")' % (textList1[i],textList2[i],textList3[i],urlPath))
+                if len(textList4)>0 :
+                    #if textList4[0]=='aceholder':
+                    print("有验证码:"+str(textList4[0]))
+                    response = requests.get(r"https://www.douban.com",headers = headers)
+                    print(str(response.status_code)+"有验证码!")
+                    time.sleep(10)
+                    #换个IP
+                    randomchoice=random.choice(pro)
+                    randomcookie=random.choice(cookiesSet)  
+                else:
+                    if len(textList1)>0 :
+        ##                with open(r'C:\douban.txt', 'wb+') as f:
+        ##                    f.write(response.content) #把登陆主页后返回的数据保存到文件中
+                        # 遍历列表中元素,并将数据存入数据库
+                        for i in range(len(textList1)):
+                            print(str(textList1[i])+' ID='+urlPath)
+                            if len(textList2)>0 and len(textList3)>0 :
+                                print('insert into t_usersInDouban(same,movieName,pictrue_address,user) VALUES("%s","%s","%s","%s")' % (textList1[i],textList2[i],textList3[i],urlPath))
+                                cursor.execute('insert into t_usersInDouban(same,movieName,pictrue_address,user) VALUES("%s","%s","%s","%s")' % (textList1[i],textList2[i],textList3[i],urlPath))
             else:
                 print("cookie失效:"+str(response.status_code))
                 time.sleep(10)
@@ -246,11 +289,12 @@ __utma=30149280.195835846.1532935690.1544060310.1544066613.9; __utmt=1; dbcl2="4
         except Exception as e:
             #数据回滚
             #conn.rollback()
-            response = requests.get(r"https://www.douban.com")
+            response = requests.get(r"https://www.douban.com",headers = headers)
             print(str(response.status_code)+"数据已回滚"+str(e))
             time.sleep(10)
             #换个IP
             randomchoice=random.choice(pro)
+            randomcookie=random.choice(cookiesSet)
  
     #关闭数据库
     conn.close()
@@ -277,7 +321,7 @@ def page(url,default):
  
  
 if __name__ == '__main__':
-##    url = r"https://www.douban.com/people/54822305"14822505
+##    url = r"https://www.douban.com/people/54822545"
 ##    urlList = []
 ##    urlList.append(url)
 ##    resp(urlList)
@@ -285,7 +329,9 @@ if __name__ == '__main__':
     url = r"https://www.douban.com/people/"
     urlList = []
     urlList.append(url)
-    default=54822305
+    #default=54822305
+    default=54838278
+    #default=54822544
     for i in range(200000):
         default=default+i*100
         listURL = page(url,default)
