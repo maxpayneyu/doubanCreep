@@ -257,9 +257,9 @@ _gat_UA-7019765-1=1; dbcl2="45911446:dKQXLbIaL2o"; ck=_MYr; _pk_id.100001.8cb4=c
             print(str(len(textList1))+' ID='+urlPath+' 代理：'+randomIP)
             
             if response.status_code==200 or response.status_code==404:
-                if len(textList4)>0 :
+                if html.find('placeholder="验证码"')>-1 or html.find('机器人')>-1:
                     #if textList4[0]=='aceholder':
-                    print("有验证码:"+str(textList4[0]))
+                    print(html)
                     response = requests.get(r"https://www.douban.com",headers = headers)
                     print(str(response.status_code)+"有验证码!")
                     time.sleep(10)
