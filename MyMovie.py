@@ -54,8 +54,8 @@ def resp(listURL):
     cursor = conn.cursor()
  
     #创建列表t_movieTOP250（执行sql语句）
-    cursor.execute('SELECT * FROM world.t_moviemine')
-    #cursor.execute('create table t_movieMine(id INT PRIMARY KEY auto_increment NOT NULL ,movieName VARCHAR(20) NOT NULL ,pictrue_address VARCHAR(100))')
+    #cursor.execute('SELECT * FROM world.t_moviemine')
+    cursor.execute('create table t_movieMine(id INT PRIMARY KEY auto_increment NOT NULL ,movieCode VARCHAR(20) NOT NULL,movieName VARCHAR(200) NOT NULL ,pictrue_address VARCHAR(100))')
 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36',
                'Accept-Language': 'zh-CN,zh;q=0.9',
@@ -83,17 +83,20 @@ _gat_UA-7019765-1=1; dbcl2="45911446:dKQXLbIaL2o"; ck=_MYr; _pk_id.100001.8cb4=c
             namePat = r'class="">+\
                             <em>(.*?)</em>'
             imgPat = r'src="(.*?)" class='
+            codePat = r'href="https://movie.douban.com/subject/(.*?)/" class="nbg">'
  
             # 匹配正则（排名【用数据库中id代替，自动生成及排序】、电影名、电影海报（图片地址））
+            res1 = re.compile(codePat)
             res2 = re.compile(namePat)
             res3 = re.compile(imgPat)
+            textList1 = res1.findall(html)
             textList2 = res2.findall(html)
             textList3 = res3.findall(html)
             print(str(len(textList2))+' '+str(len(textList3)))
             
             # 遍历列表中元素,并将数据存入数据库
-            for i in range(len(textList3)):
-                cursor.execute('insert into t_movieMine(movieName,pictrue_address) VALUES("%s","%s")' % (textList2[i],textList3[i]))
+            for i in range(len(textList1)):
+                cursor.execute('insert into t_movieMine(movieCode,movieName,pictrue_address) VALUES("%s","%s","%s")' % (textList1[i],textList2[i],textList3[i]))
  
         #从游标中获取结果
         cursor.fetchall()
